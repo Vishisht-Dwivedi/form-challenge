@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap"
+    rel="stylesheet">
+  <title>Frontend Mentor | Contact form</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    body {
+      font-family: "Karla", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-style: normal;
+      padding: 0;
+      margin: 0;
+    }
+
+    table {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      width: 650px;
+    }
+
+    tr {
+      display: flex;
+      width: 100%;
+    }
+
+    td {
+      display: flex;
+      width: 100%;
+      padding: 0.3rem;
+      margin: 0.2rem;
+    }
+
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+
+    .outer {
+      background-color: hsl(148, 38%, 91%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .form-outer {
+      flex-wrap: wrap;
+      background-color: white;
+      flex-direction: column;
+      border-radius: 1rem;
+      padding: 1.5rem;
+    }
+
+    thead h1 {
+      color: hsl(162, 24%, 22%);
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      font-size: 2rem;
+    }
+
+    input[type='text'],
+    input[type='email'],
+    textarea {
+      padding: 0.5rem;
+      border: 1px solid hsl(168, 17%, 69%);
+      border-radius: 0.5rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    input[type="radio"] {
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    label {
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    .qspan {
+      display: block;
+      box-sizing: 100%;
+      border-radius: 0.5rem;
+      border: 1px solid hsl(168, 17%, 69%);
+      padding: 0.5rem;
+      font-size: 16px;
+      width: 100%;
+    }
+
+    span {
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    input[type='text']:hover,
+    input[type='email']:hover,
+    textarea:hover,
+    .qspan:hover,
+    .consent-line:hover,
+    .submit-btn:hover {
+      cursor: pointer;
+    }
+
+    input[type='text']:focus,
+    input[type='email']:focus,
+    textarea:focus {
+      border: 1px solid hsl(152, 77%, 40%);
+      box-shadow: 0 0 5px hsl(148, 38%, 91%) inset;
+      outline: none;
+      cursor: text;
+    }
+
+
+    label,
+    .qtext {
+      font-size: 15px;
+      font-weight: 400;
+      margin: 0.25rem 0 0;
+    }
+
+    .consent-line {
+      display: block;
+      margin: 0.5rem 0 1rem;
+      position: relative;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid hsl(168, 17%, 69%);
+      border-radius: 0.5rem;
+      font-weight: 800;
+      color: white;
+      background-color: hsl(169, 82%, 27%);
+    }
+
+    .consent-btn {
+      position: relative;
+      vertical-align: middle;
+      margin-right: 0.5rem;
+      height: 1rem;
+      width: 1rem;
+      cursor: pointer;
+    }
+
+    .consent-btn:checked {
+      accent-color: hsl(157, 82%, 33%);
+    }
+
+    .rbox {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      box-sizing: border-box;
+      transition: 0.2s;
+    }
+
+
+    .rbox::before {
+      content: url('./assets/images/icon-radio-unselected.svg');
+      margin-right: 5%;
+      margin-left: 5%;
+    }
+
+    input[type='radio'] {
+      display: none;
+
+      &:checked {
+        +.rbox::before {
+          content: url('./assets/images/icon-radio-selected.svg');
+        }
+
+        +.rbox {
+          background-color: hsl(148, 38%, 91%);
+        }
+      }
+    }
+
+    .warning {
+      color: red;
+      font-size: 14px;
+      margin-top: 0.3rem;
+    }
+
+    .warningBox {
+      border: 1px solid red !important;
+    }
+
+    .block {
+      display: block;
+    }
+
+    .success-inner {
+      display: none;
+      flex-direction: column;
+      background-color: hsl(187, 24%, 22%);
+      color: rgb(255, 255, 255);
+      padding: 0.5rem 1.5rem;
+      border-radius: 1rem;
+      width: 405px;
+      transition: 0.1s;
+    }
+
+    .success-inner .header {
+      display: flex;
+      margin: 0.2rem 0.2rem 0;
+    }
+
+    .header h3 {
+      margin-left: 5%;
+    }
+
+    .footer p {
+      margin-top: 0;
+      font-size: 16px;
+    }
+
+    input[type='text'],
+    .qspan {
+      height: 3rem;
+    }
+
+    textarea {
+      height: 6rem;
+    }
+
+    #mobile-toggle-on {
+      display: none;
+    }
+
+    @media (min-width:500px) and (max-width:700px) {
+      .form-outer {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 2rem;
+      }
+
+      table {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+      }
+    }
+
+    @media (max-width:500px) {
+      .form-outer {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 2rem;
+      }
+
+      table {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+      }
+
+      tr {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      #mobile-toggle-on {
+        display: block;
+      }
+
+      #mobile-toggle-off {
+        display: none;
+      }
+
+      .success-inner {
+        width: 100%;
+        padding: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="outer">
+    <div class="success-inner">
+      <div class="header">
+        <img src="./assets/images/icon-success-check.svg" alt="">
+        <h3>Message Sent!</h3>
+      </div>
+      <div class="footer">
+        <p>Thanks for completing the form. We'll be in touch soon!</p>
+      </div>
+    </div>
+    <div class="form-outer">
+      <table>
+        <form action="">
+          <thead>
+            <tr>
+              <td colspan="2">
+                <h1>Contact Us</h1>
+              </td>
+            </tr>
+          </thead>
+          <tr>
+            <td>
+              <span>
+                <label for="fname">First Name</label>
+              </span>
+            </td>
+            <td>
+              <span id="mobile-toggle-off">
+                <label for="lname">Last Name</label>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span>
+                <input type="text" name="fname" id="fname">
+              </span>
+            </td>
+            <td id="mobile-toggle-on">
+              <span>
+                <label for="lname">Last Name</label>
+              </span>
+            </td>
+            <td>
+              <span>
+                <input type="text" name="lname" id="lname">
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span>
+                <label for="email">Email Address</label>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <span>
+                <input style='width: 100%; box-sizing:border-box;' type="text" id="email">
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="qtext">Query Type</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="gquery">
+                <input type="radio" name="qselector" id="gquery" value="gquery">
+                <div class="rbox qspan">
+                  General Enquiry</div>
+              </label>
+
+            </td>
+            <td>
+              <label for="squery">
+                <input type="radio" name="qselector" id="squery" value="squery">
+                <div class="rbox qspan">
+                  Support Request
+                </div>
+              </label>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <label for="tArea">Message</label>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="block">
+              <textarea rows="3" style="width:100%; box-sizing:border-box; resize: none;" name="tArea"
+                id="tArea"></textarea>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2">
+              <label for="consent" class="consent-line">
+                <input type="checkbox" name="consent" id="consent" class="consent-btn">
+                I hereby consent to being contacted by the team
+              </label>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <button class='submit-btn' type="submit" value="submit">Submit</button>
+            </td>
+          </tr>
+        </form>
+
+      </table>
+    </div>
+
+  </section>
+
+
+
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+
+  <script>
+    const submitBtn = document.querySelector('.submit-btn');
+
+    const form = document.querySelector('form');
+
+    const trueArr = []
+
+    form.addEventListener('submit', (e) => {
+
+      console.log(e);
+      e.preventDefault();
+
+
+
+
+      function checkFlag() {
+
+        const trueArr = [];
+        function nameAndTextChecker() {
+
+          let textInputs = [e.srcElement[0], e.srcElement[1], e.srcElement[5]];
+          for (input of textInputs) {
+
+            const warningMsg = document.createElement('p');
+
+            warningMsg.innerText = 'This field is required';
+            warningMsg.classList.add('warning');
+
+            if (input.value === '') {
+
+              if (input.parentElement.children.length < 2) {
+
+                input.parentElement.append(warningMsg);
+                input.classList.add('warningBox');
+              }
+
+            } else {
+              if (input.parentElement.children.length === 2) {
+                input.classList.remove('warningBox');
+                input.parentElement.removeChild(input.parentElement.children[1]);
+
+              }
+              trueArr.push(true);
+            }
+          }
+          console.log(trueArr);
+          if (trueArr[0] === true && trueArr[1] === true && trueArr[2] === true) {
+            return true;
+          }
+        }
+
+
+        function emailChecker() {
+          const email = e.srcElement[2];
+          if (email.value === "") {
+            const warningMsg = document.createElement('p');
+            warningMsg.innerText = 'This field is required';
+            warningMsg.classList.add('warning');
+            if (email.parentElement.children.length < 2) {
+
+              email.parentElement.append(warningMsg);
+              email.classList.add('warningBox');
+            }
+          } else if (!email.value.contains === '@') {
+            warningMsg.innerText = 'Please enter a valid email address';
+            if (email.parentElement.children.length === 2) {
+              email.parentElement.children.removeChild(email.parentElement.children[1]);
+              email.parentElement.append(warningMsg);
+            } else {
+              email.parentElement.append(warningMsg);
+            }
+
+
+          } else {
+            if (email.parentElement.children.length === 2) {
+              email.parentElement.removeChild(email.parentElement.children[1]);
+              email.classList.remove('warningBox');
+            }
+            return true;
+          }
+        }
+
+        function queryChecker() {
+          if (e.srcElement[3].checked === false && e.srcElement[4].checked === false) {
+            const warningTr = document.createElement('tr');
+            const warningTd = document.createElement('td');
+            warningTr.append(warningTd);
+
+            const warningMsg = document.createElement('p');
+            warningTd.append(warningMsg);
+
+            warningMsg.innerText = 'Please select a query type';
+            warningMsg.classList.add('warning');
+            if (e.srcElement[3].parentElement.parentElement.parentElement.parentElement.children.length === 10) {
+              e.srcElement[3].parentElement.parentElement.parentElement.insertAdjacentElement('afterend', warningTr);
+            }
+
+          } else {
+            if (e.srcElement[3].parentElement.parentElement.parentElement.parentElement.children.length === 11) {
+              e.srcElement[3].parentElement.parentElement.parentElement.parentElement.removeChild(e.srcElement[3].parentElement.parentElement.parentElement.parentElement.children[6]);
+            }
+            return true;
+          }
+        }
+        function consentChecker() {
+          if (e.srcElement[6].checked !== true) {
+            const warningMsg = document.createElement('p');
+            warningMsg.innerText = 'To submit this form, Please consent to being contacted';
+            warningMsg.classList.add('warning');
+            if (e.srcElement[6].parentElement.children.length === 1) {
+              e.srcElement[6].parentElement.append(warningMsg);
+            }
+          } else {
+
+            if (e.srcElement[6].parentElement.children.length > 1) {
+              e.srcElement[6].parentElement.removeChild(e.srcElement[6].parentElement.children[1]);
+            }
+            return true;
+          }
+        }
+
+        queryChecker();
+        emailChecker();
+        nameAndTextChecker();
+        consentChecker();
+        console.log(queryChecker(), emailChecker(), nameAndTextChecker(), consentChecker());
+        if (queryChecker() === true && emailChecker() === true && nameAndTextChecker() === true && consentChecker() === true) {
+
+          setTimeout(() => {
+            console.log('here');
+            console.log(document.querySelector('.success-inner'));
+            document.querySelector('.success-inner').style.display = 'flex';
+            setTimeout(() => {
+              document.querySelector('.success-inner').style.display = 'none';
+            }, 2000);
+          }, 200);
+
+        }
+      }
+      checkFlag();
+
+
+
+    });
+
+
+
+  </script>
+
+</body>
+
+</html>
