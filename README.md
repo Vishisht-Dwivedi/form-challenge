@@ -21,8 +21,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: (https://vishisht-dwivedi.github.io/form-challenge/)
 
 ## My process
 To take on a little bit of a challenge to myself i built this using html tables and vanilla js and pure css. I used the most of my current knowledge in using the js to instill functionality in the contact form.
