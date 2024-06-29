@@ -294,6 +294,10 @@
         padding: 2rem;
       }
     }
+    a::after {
+      content: '  *';
+      color: green;
+    }
   </style>
 </head>
 
@@ -321,12 +325,12 @@
           <tr>
             <td>
               <span>
-                <label for="fname">First Name</label>
+                <label class='a' for="fname">First Name</label>
               </span>
             </td>
             <td>
               <span id="mobile-toggle-off">
-                <label for="lname">Last Name</label>
+                <label class='a' for="lname">Last Name</label>
               </span>
             </td>
           </tr>
@@ -338,7 +342,7 @@
             </td>
             <td id="mobile-toggle-on">
               <span>
-                <label for="lname">Last Name</label>
+                <label class='a' for="lname">Last Name</label>
               </span>
             </td>
             <td>
@@ -350,7 +354,7 @@
           <tr>
             <td>
               <span>
-                <label for="email">Email Address</label>
+                <label class='a' for="email">Email Address</label>
               </span>
             </td>
           </tr>
@@ -363,7 +367,7 @@
           </tr>
           <tr>
             <td colspan="2">
-              <div class="qtext">Query Type</div>
+              <div class="qtext a">Query Type</div>
             </td>
           </tr>
           <tr>
@@ -386,7 +390,7 @@
           </tr>
           <tr>
             <td colspan="2">
-              <label for="tArea">Message</label>
+              <label class='a' for="tArea">Message</label>
             </td>
           </tr>
           <tr>
@@ -399,7 +403,7 @@
           <tr>
             <td colspan="2">
               <label for="consent" class="consent-line">
-                <input type="checkbox" name="consent" id="consent" class="consent-btn">
+                <input type="checkbox" name="consent" id="consent" class="consent-btn a">
                 I hereby consent to being contacted by the team
               </label>
             </td>
